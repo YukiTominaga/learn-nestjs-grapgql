@@ -1,0 +1,34 @@
+directive @upper on FIELD_DEFINITION
+
+type Author {
+  id: String!
+  firstName: String @upper
+  lastName: String  @upper
+  posts: [Post]
+}
+
+type Post {
+  id: String!
+  title: String!
+  votes: Int
+}
+
+type Query {
+  author(id: Int!): Author!
+}
+
+type Query {
+  post(id: String!): Post!
+}
+
+type Mutation {
+  upvotePost(postId: Int!): Post
+}
+
+type Mutation {
+  createAuthor(firstName: String!, lastName: String!): Author
+}
+
+type Mutation {
+  createPost(id: String!, title: String!, votes: Int = 0): Post
+}
