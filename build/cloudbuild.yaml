@@ -1,0 +1,16 @@
+steps:
+- name: 'gcr.io/cloud-builders/yarn'
+  id: 'install'
+  args: ['install']
+
+- name: 'gcr.io/cloud-builders/yarn'
+  id: 'build'
+  args: ['run', 'build']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'package'
+  args: ["build", "-t", "asia.gcr.io/${PROJECT_ID}/crystal/nestjs:graphql", "-f", "build/Dockerfile", "."]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push'
+  args: ["push", "asia.gcr.io/${PROJECT_ID}/crystal/nestjs:graphql"]

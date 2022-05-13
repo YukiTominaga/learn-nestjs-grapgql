@@ -1,9 +1,7 @@
-directive @upper on FIELD_DEFINITION
-
 type Author {
   id: String!
-  firstName: String @upper
-  lastName: String  @upper
+  firstName: String
+  lastName: String
   posts: [Post]
 }
 
@@ -18,7 +16,7 @@ type Query {
 }
 
 type Query {
-  authors: [Author]!
+  authors: [Author!]!
 }
 
 type Query {

@@ -21,7 +21,8 @@ export interface Post {
 }
 
 export interface IQuery {
-    author(id: number): Author | Promise<Author>;
+    author(id: string): Author | Promise<Author>;
+    authors(): Nullable<Author>[] | Promise<Nullable<Author>[]>;
     post(id: string): Post | Promise<Post>;
 }
 

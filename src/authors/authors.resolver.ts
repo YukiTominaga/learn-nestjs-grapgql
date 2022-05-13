@@ -17,8 +17,13 @@ export class AuthorsResolver {
   ) {}
 
   @Query('author')
-  async getAuthor(@Args('id') id: string) {
+  async getAuthor(@Args('id') id?: string) {
     return this.authorsService.findOneById(id);
+  }
+
+  @Query('authors')
+  async getAll() {
+    return await this.authorsService.getAll();
   }
 
   @Mutation()
